@@ -9,6 +9,21 @@ const app = express();
 app.use(logger('dev'));
 app.use(jsonParser());
 
+let mongoose = require('mongoose');
+
+mongoose.connect('mongodb://localhost:27017/qa');
+
+let db = mongoose.connection;
+
+db.on('error', () => {
+    console.error('connection error:', err);
+});
+
+db.once('open', () => {
+    console.log('db connection successful');
+    // All database communication goes here
+});
+
 app.use('/questions', routes);
 
 // catch 404 and forward to error handler
