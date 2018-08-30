@@ -21,12 +21,10 @@ db.on('error', () => {
 
 db.once('open', () => {
     console.log('db connection successful');
-    // All database communication goes here
 });
 
 app.use('/questions', routes);
 
-// catch 404 and forward to error handler
 app.use((req, res, next)=> {
    let err = new Error('Not found'); 
    err.status = 404;

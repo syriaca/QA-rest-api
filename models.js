@@ -2,16 +2,17 @@
 
 let mongoose = require('mongoose');
 
-let Schema = mongoose.schema;
+let Schema = mongoose.Schema;
 
 let sortAnswers = function(a, b) {
     //- negative a before b
-    //O no change
+    //0 no change
     //+ positive a after b
 
     if(a.votes === b.votes) {
         return b.updatedAt - a.updatedAt;
     }
+
     return b.votes - a.votes;
 }
 
